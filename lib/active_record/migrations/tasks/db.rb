@@ -50,7 +50,7 @@ namespace :db do
 		database_tasks.send(:define_method, :load_seed) do
 			load File.join(root, 'db/seed.rb')
 		end
-		database_tasks.send(:defined_method, :setup_initial_database_yaml) do
+		database_tasks.send(:define_method, :setup_initial_database_yaml) do
 			return {}
 		end
 	end
