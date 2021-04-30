@@ -50,9 +50,6 @@ namespace :db do
 		database_tasks.send(:define_method, :load_seed) do
 			load File.join(root, 'db/seed.rb')
 		end
-		database_tasks.send(:define_method, :setup_initial_database_yaml) do
-			return {}
-		end
 	end
 	
 	task :schema_path => :load_config do
@@ -108,6 +105,8 @@ namespace :db do
 		end
 	end
 end
+
+require_relative 'db/setup_initial_database_yaml'
 
 # Loading this AFTER we define our own load_config task is critical, we need to make sure things are set up correctly before we run the task of the same name from ActiveRecord.
 load 'active_record/railties/databases.rake'

@@ -41,7 +41,7 @@ module ActiveRecord
 		module Tasks
 			module DatabaseTasks
 				def each_current_configuration(environment, spec_name = nil)
-					unless configuration = ActiveRecord::Base.configurations.find_db_config(environment)
+					unless configuration = ActiveRecord::Base.configurations.find_db_config(environment)&.configuration_hash
 						raise ArgumentError.new("Cannot find configuration for environment #{environment.inspect} in #{ActiveRecord::Base.configurations.keys}")
 					end
 					
