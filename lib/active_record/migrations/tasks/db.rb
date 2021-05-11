@@ -106,7 +106,7 @@ namespace :db do
 	end
 end
 
-require_relative 'db/setup_initial_database_yaml'
+require_relative 'db/setup_initial_database_yaml' if defined?(Rails)
 
 # Loading this AFTER we define our own load_config task is critical, we need to make sure things are set up correctly before we run the task of the same name from ActiveRecord.
 load 'active_record/railties/databases.rake'
